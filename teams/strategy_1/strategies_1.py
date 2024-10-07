@@ -4,6 +4,19 @@ from typing import List
 
 from CardGame import Deck, Player
 
+remaining_cards = {}
+
+def initialize_totals(deck):
+    for card in deck.copyCards:
+        remaining_cards[card] = 0
+
+def remove_seen(exposed_cards):
+    for player in exposed_cards:
+        remove_card(exposed_cards[player])
+
+def remove_card(hand):
+    for card in hand:
+        remaining_cards[card] = -1
 
 class PlayingStrategy(abc.ABC):
     @abc.abstractmethod
@@ -39,6 +52,13 @@ class DefaultPlayingStrategy(PlayingStrategy):
 
 
 def playing(player, deck):
+    if not deck:
+        initialize_totals(deck)
+    
+    remove_card(player.hand)
+
+    remove_seen(player.exposed_cards)
+
     return DefaultPlayingStrategy().play(player, deck)
 
 
