@@ -35,6 +35,7 @@ def find_best_seed(seed_range, turns=100):
     
     return best_seed, best_score
 
+
 if __name__ == "__main__":
     seed_range = range(1, 500)  # Example range of seeds to test
     best_seed, best_score = find_best_seed(seed_range)
