@@ -285,10 +285,10 @@ def guessing(player, cards, round):
     rem = sorted(rem)
     fake_suits = get_fake_suits(turn_number, rem, 4)
 
-    print(f"Check prob datastore: {guesses_and_c_vals_local}")
+    # print(f"Check prob datastore: {guesses_and_c_vals_local}")
     # TODO: below is how you can get the weight distribution to use for guessing
     weight_distribution = get_likelihood_weight_distribution(guesses_and_c_vals_local)
-    print(f"w_d: {weight_distribution}")
+    # print(f"w_d: {weight_distribution}")
 
     partner_card = player.exposed_cards[partner(player.name)][-1]
     partner_card_idx = card_to_idx(partner_card)
