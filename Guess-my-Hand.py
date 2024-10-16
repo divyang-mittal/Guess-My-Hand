@@ -303,12 +303,8 @@ def run_game_without_gui(seed):
             for other_player in players:
                 other_player.update_exposed_cards(player.name, played_card)
         
-        idealGuessLen = 13 - round
-
         try:
             northGuess = NorthSouthGuess(players[0], deck.copyCards, round)
-            if len(northGuess) > idealGuessLen:
-                northGuess = northGuess[:idealGuessLen]
             players[0].guesses.append(northGuess)
             cNorth = len(set(northGuess).intersection(set(players[2].hand)))
         except:
@@ -320,8 +316,6 @@ def run_game_without_gui(seed):
 
         try:
             eastGuess = EastWestGuess(players[1], deck.copyCards, round)
-            if len(eastGuess) > idealGuessLen:
-                eastGuess = eastGuess[:idealGuessLen]
             players[1].guesses.append(eastGuess)
             cEast = len(set(eastGuess).intersection(set(players[3].hand)))
         except:
@@ -333,8 +327,6 @@ def run_game_without_gui(seed):
 
         try:
             southGuess = NorthSouthGuess(players[2], deck.copyCards, round)
-            if len(southGuess) > idealGuessLen:
-                southGuess = southGuess[:idealGuessLen]
             players[2].guesses.append(southGuess)
             cSouth = len(set(southGuess).intersection(set(players[0].hand)))
 
@@ -347,8 +339,6 @@ def run_game_without_gui(seed):
 
         try:
             westGuess = EastWestGuess(players[3], deck.copyCards, round)
-            if len(westGuess) > idealGuessLen:
-                westGuess = westGuess[:idealGuessLen]
             players[3].guesses.append(westGuess)
             cWest = len(set(westGuess).intersection(set(players[1].hand)))
 
